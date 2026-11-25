@@ -65,7 +65,7 @@ struct NowPlayingExpandedNotchView: View {
         elapsedTime
         let appearance = settings.nowPlayingAppearanceOptions
 
-        return VStack(spacing: 12) {
+        return VStack(spacing: 8) {
             headerSection(snapshot: snapshot, appearance: appearance)
             
             PlayerProgressBar(
@@ -95,8 +95,8 @@ struct NowPlayingExpandedNotchView: View {
             }) {
                 ArtworkView(
                     nowPlayingViewModel: nowPlayingViewModel,
-                    width: isNotchlessScreen ? 55 : 58,
-                    height: isNotchlessScreen ? 55 : 58,
+                    width: isNotchlessScreen ? 46 : 58,
+                    height: isNotchlessScreen ? 46 : 58,
                     cornerRadius: 10,
                     usesFlipAnimation: true
                 )
@@ -112,7 +112,7 @@ struct NowPlayingExpandedNotchView: View {
                     VStack(alignment: .leading, spacing: 2) {
                         MarqueeText(
                             .constant(displayTitle(for: snapshot)),
-                            font: .system(size: 16, weight: .medium),
+                            font: .system(size: 14, weight: .medium),
                             nsFont: .headline,
                             textColor: .white,
                             backgroundColor: .clear,
@@ -122,7 +122,7 @@ struct NowPlayingExpandedNotchView: View {
 
                         MarqueeText(
                             .constant(displayArtist(for: snapshot)),
-                            font: .system(size: 14, weight: .light),
+                            font: .system(size: 12, weight: .light),
                             nsFont: .headline,
                             textColor: .white.opacity(0.5),
                             backgroundColor: .clear,
@@ -154,12 +154,12 @@ struct NowPlayingExpandedNotchView: View {
     @ViewBuilder
     private func controlsSection(snapshot: NowPlayingSnapshot, appearance: NowPlayingAppearanceOptions) -> some View {
         ZStack {
-            HStack(spacing: 25) {
+            HStack(spacing: 22) {
                 PlayerControlButton(
                     systemImage: "backward.fill",
-                    fontSize: 22,
-                    width: 42,
-                    height: 42,
+                    fontSize: 18,
+                    width: 36,
+                    height: 36,
                     feedbackStyle: .backward
                 ) {
                     nowPlayingViewModel.previousTrack()
@@ -167,9 +167,9 @@ struct NowPlayingExpandedNotchView: View {
 
                 PlayerControlButton(
                     systemImage: snapshot.isPlaying ? "pause.fill" : "play.fill",
-                    fontSize: 32,
-                    width: 42,
-                    height: 42,
+                    fontSize: 28,
+                    width: 36,
+                    height: 36,
                     feedbackStyle: .playPause
                 ) {
                     nowPlayingViewModel.togglePlayPause()
@@ -177,9 +177,9 @@ struct NowPlayingExpandedNotchView: View {
 
                 PlayerControlButton(
                     systemImage: "forward.fill",
-                    fontSize: 22,
-                    width: 42,
-                    height: 42,
+                    fontSize: 18,
+                    width: 36,
+                    height: 36,
                     feedbackStyle: .forward
                 ) {
                     nowPlayingViewModel.nextTrack()
@@ -190,9 +190,9 @@ struct NowPlayingExpandedNotchView: View {
                 if appearance.showsFavoriteButton {
                     FavoriteTrackButton(
                         nowPlayingViewModel: nowPlayingViewModel,
-                        width: 42,
-                        height: 42,
-                        fontSize: 21
+                        width: 36,
+                        height: 36,
+                        fontSize: 17
                     )
                 }
 
@@ -201,9 +201,9 @@ struct NowPlayingExpandedNotchView: View {
                 if appearance.showsOutputDeviceButton {
                     AudioOutputRoutePickerButton(
                         nowPlayingViewModel: nowPlayingViewModel,
-                        width: 42,
-                        height: 42,
-                        fontSize: 21
+                        width: 36,
+                        height: 36,
+                        fontSize: 17
                     )
                 }
             }
