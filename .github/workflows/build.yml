@@ -13,7 +13,7 @@ jobs:
           echo "::notice::$(xcodebuild -version | tr '\n' ' ')"
           xcodebuild -project DynamicNotch.xcodeproj -scheme DynamicNotch \
             -configuration Release -derivedDataPath build \
-            ARCHS="x86_64 arm64" ONLY_ACTIVE_ARCH=NO \
+            ARCHS="x86_64 arm64" ONLY_ACTIVE_ARCH=NO MACOSX_DEPLOYMENT_TARGET=14.6 \
             -skipMacroValidation -skipPackagePluginValidation \
             CODE_SIGNING_ALLOWED=NO CODE_SIGN_IDENTITY="" build 2>&1 | tee build.log || {
               grep -E "error:" build.log | sort -u | head -10 | while read -r l; do echo "::error::${l}"; done
